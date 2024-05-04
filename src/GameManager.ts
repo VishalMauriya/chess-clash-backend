@@ -1,7 +1,9 @@
 import { Game } from "./Game";
 import WebSocket from 'ws';
+import redisClient from './connections/redis';
 import { v4 as uuidv4 } from 'uuid';
-import { BLACK, GAME_START, INIT_GAME, MOVE, RESIGN, TIMEOUT, WHITE } from "./messages";
+import { BLACK, GAME_START, INIT_GAME, MOVE, RESIGN, TIMEOUT, WHITE } from "./helpers/messages";
+import { IGame } from "./Models/Game";
 
 export class GameManager {
     private games: Game[];

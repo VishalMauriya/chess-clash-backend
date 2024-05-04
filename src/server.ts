@@ -3,6 +3,8 @@ import http from 'http';
 import WebSocket from 'ws';
 import dotenv from 'dotenv';
 import { GameManager } from './GameManager';
+import connectDB from './connections/db';
+import redisClient from './connections/redis';
 dotenv.config();
 
 
@@ -20,6 +22,7 @@ wss.on('connection', (ws) => {
   ws.on('close', () => gameManager.removeUser(ws));
 });
 
+connectDB();
 
 server.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
